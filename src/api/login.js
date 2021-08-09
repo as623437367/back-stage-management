@@ -19,6 +19,9 @@ import http from '../utils/http'
 export function login(obj) {
   return http.post('/mp/v1_0/authorizations',obj)
 }
+export function getuserinfo(params) {
+  return http.get('/mp/v1_0/user/profile',params)
+}
 // // get请求
 // export function getListAPI(params){
 //     return http.get(`${resquest}/getList.json`,params)

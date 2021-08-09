@@ -55,8 +55,8 @@ export default {
     }
     return {
       form: {
-        mobile: '',
-        code: '',
+        mobile: '13911111111',
+        code: '246810',
         agree: false,
       },
       checked: false,
@@ -86,14 +86,24 @@ export default {
           this.loginloading = !this.loginloading
           login(user)
             .then((res) => {
+              this.$message({
+                showClose: true,
+                message: '恭喜你，登录成功',
+                type: 'success',
+              })
               this.loginloading = !this.loginloading
               console.log(res)
+              localStorage.setItem('token', res.data.data.token)
+              this.$router.push({
+                name: 'Home',
+              })
             })
             .catch((err) => {
               this.loginloading = !this.loginloading
               this.$message({
+                showClose: true,
                 message: '登录失败',
-                type: 'warning',
+                type: 'error',
               })
               console.log(err)
             })

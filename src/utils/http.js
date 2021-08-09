@@ -9,11 +9,15 @@ const http ={
      * @param params 请求参数
      */
     get(url,params){
+        // let token = localStorage.getItem('token')
         const config = {
             method: 'get',
-            url:url
+            url:url,
+            
+            // headers:{Authorization: `Bearer ${token}` }
         }
-        if(params) config.params = params
+        if(params) config.headers = params
+        // console.log(params);
         return request(config)
     },
     post(url,params){
