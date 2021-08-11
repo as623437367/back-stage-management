@@ -16,7 +16,7 @@ const http ={
             
             // headers:{Authorization: `Bearer ${token}` }
         }
-        if(params) config.headers = params
+        if(params) config.params = params
         // console.log(params);
         return request(config)
     },

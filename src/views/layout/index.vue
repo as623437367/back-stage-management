@@ -35,7 +35,8 @@
             </div>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>设置</el-dropdown-item>
-              <el-dropdown-item>退出</el-dropdown-item>
+              <!-- 组件默认不识别原生事件 可以在点击事件中加.native 或在文档中在dropdown @command="handleCommand" -->
+              <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-header>
@@ -67,6 +68,30 @@ export default {
     this.userinfo()
   },
   methods: {
+    logout() {
+      this.$confirm('是否退出?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      })
+        .then(() => {
+          window.localStorage.removeItem('token')
+          this.$router.push({
+            name: 'login',
+          })
+          this.$message({
+            type: 'success',
+            message: '删除成功!',
+          })
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消',
+          })
+        })
+    },
+
     changeAsideShow() {
       this.showdetail = !this.showdetail
     },

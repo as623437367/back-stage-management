@@ -9,13 +9,24 @@
 /****   request.js   ****/
 
 import axios from 'axios'
+import JSONbig from 'json-bigint'
 // 使用element-ui Message做消息提醒
 import { Message} from 'element-ui';
 //1. 创建新的axios实例，
 const service = axios.create({
   // 公共接口--这里注意后面会讲
   baseURL: 'http://api-toutiao-web.itheima.net/',
-  // 超时时间 单位是ms，这里设置了3s的超时时间
+  transformResponse:[function(data) {
+
+    //axios默认是用JSON.parse()
+    //防止报错
+    try {
+      return JSONbig.parse(data)
+    } catch (e) {
+      return data
+    }
+    
+  }]
   
 })
 // 2.请求拦截器

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/loginpage/index.vue'
 import Home from '@/views/home/index.vue'
 import Layout from '@/views/layout/index.vue'
-import { resolve } from 'q'
+
 
 
 Vue.use(VueRouter)
@@ -37,5 +37,18 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+//路由导航守卫
 
+router.beforeEach((to,from,next) => {
+  const token = localStorage.getItem('token')
+  if(to.path !== '/login') {
+    if(token) {
+      next()
+    }else {
+      next('/login')
+    }
+  }else {
+    next()
+  }
+})
 export default router

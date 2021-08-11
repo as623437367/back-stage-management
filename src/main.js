@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 
 import './style/index.less'
+// import JSONbig from 'json-bigint'
 
 Vue.use(ElementUI);
 
