@@ -28,6 +28,11 @@ const routes = [
         path:'/article',
         name:'article',
         component: resolve => require(['@/views/context/index.vue'],resolve)
+      },
+      {
+        path:'/publish',
+        name:'publish',
+        component: resolve => require(['@/views/publish/index.vue'],resolve)
       }
     ]
   },

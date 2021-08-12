@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-menu
-      default-active="/"
+      :default-active="activeindex"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -52,6 +52,7 @@ export default {
   name: 'appaside',
   props: {
     showdetail: Boolean,
+    activeindex: String,
   },
   data() {
     return {

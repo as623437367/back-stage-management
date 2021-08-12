@@ -20,12 +20,13 @@ const http ={
         // console.log(params);
         return request(config)
     },
-    post(url,params){
+    post(url,datas,params){
         const config = {
             method: 'post',
             url:url
         }
-        if(params) config.data = params
+        if(datas) config.data = datas
+        if(params) config.params = params
         return request(config)
     },
     put(url,params){

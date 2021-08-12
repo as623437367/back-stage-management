@@ -2,7 +2,12 @@
   <div class="container">
     <el-container class="layout-postion">
       <el-aside class="aside" width="auto">
-        <App-aside :showdetail="showdetail" class="asidemenu"> </App-aside>
+        <App-aside
+          :showdetail="showdetail"
+          :activeindex="activeindex"
+          class="asidemenu"
+        >
+        </App-aside>
       </el-aside>
       <el-container>
         <el-header class="header">
@@ -58,6 +63,7 @@ export default {
       user: '',
       icon: icon,
       showdetail: false,
+      activeindex: '/article',
     }
   },
   components: { AppAside },
